@@ -184,6 +184,16 @@ print("Valid number")
 
 total = 0
 integer = int(input("Please enter an integer:"))
+if integer != 0:
+    total = total + integer
+control = 0
+while control != -1:
+    integer = int(input("Please enter an integer:"))
+    if integer != 0:
+        total = total + integer
+    control = 0
+    if integer == 0:
+        control = -1
 print(total)
 
 # TASK 17:
@@ -192,6 +202,17 @@ print(total)
 # Print "Correct" if guessed in time; otherwise "Out of attempts".
 # Make sure a correct guess does NOT print both messages.
 
+secret = "robot"
+attempts = 3
+
+while attempts != 0:
+    guess = input("You have " + str(attempts) + " attempts to guess the secret word:")
+    attempts -= 1
+    if guess == secret and attempts > 0:
+        print("Correct")
+        attempts =0
+    elif attempts == 0:
+        print("Out of attempts")
 
 # TASK 18:
 # Make a while-loop menu:
@@ -201,6 +222,12 @@ print(total)
 # Repeat until the user enters 3. Handle invalid choices.
 # Print "Goodbye" only when option 2 is selected.
 
+for i in 
+while num != 3:
+    if num == 1:
+        
+    if num == 2:
+        print("Goodbye")
 
 # ============================================================
 # SECTION 4 — PROCESSING LISTS WITH LOOPS (TASKS 19–24)
