@@ -184,16 +184,10 @@ print("Valid number")
 
 total = 0
 integer = int(input("Please enter an integer:"))
-if integer != 0:
+
+while integer != 0:
     total = total + integer
-control = 0
-while control != -1:
     integer = int(input("Please enter an integer:"))
-    if integer != 0:
-        total = total + integer
-    control = 0
-    if integer == 0:
-        control = -1
 print(total)
 
 # TASK 17:
@@ -222,12 +216,26 @@ while attempts != 0:
 # Repeat until the user enters 3. Handle invalid choices.
 # Print "Goodbye" only when option 2 is selected.
 
-for i in 
-while num != 3:
-    if num == 1:
-        
-    if num == 2:
+
+def menu():
+    print("1. Say Hello")
+    print("2. Say Goodbye")
+    print("3. Exit")
+    num = int(input("Please choose a number from the menu.: "))
+    while num < 1  or num > 3:
+        print("Invalid!")
+        num = int(input("Please choose a number from the menu.: "))
+    return num
+
+loop = menu()
+
+while loop != 3:
+    if loop == 1:
+        print("Hello")
+    elif loop == 2:
         print("Goodbye")
+    loop = menu()
+
 
 # ============================================================
 # SECTION 4 — PROCESSING LISTS WITH LOOPS (TASKS 19–24)
@@ -238,17 +246,40 @@ while num != 3:
 # Use a for loop to calculate and print their total.
 # Do NOT use sum().
 
+numbers = [4, 8, 15, 16, 23, 42]
+total = 0
+for i in range(len(numbers)):
+    total += numbers[i]
+print(total)
 
 # TASK 20:
 # Create grades = [90, 85, 78, 92, 88].
 # Use a loop and len() to calculate the average.
 # Print the average. Do NOT use sum().
 
+grades = [90, 85, 78, 92, 88]
+total = 0
+for i in range(len(grades)):
+    total += grades[i]
+average = total / len(grades)
+print(average)
+
 
 # TASK 21:
 # Create numbers = [3, 8, 12, 7, 15, 20, 24, 9].
 # Use ONE loop to count even and odd values separately.
 # Print "Even: [count]" and "Odd: [count]".
+
+numbers = [3, 8, 12, 7, 15, 20, 24, 9]
+even = 0
+odd = 0
+for i in range(len(numbers)):
+    if numbers[i] % 2 == 0:
+        even += 1
+    else:
+        odd += 1
+print("Even: ", even)
+print("Odd: ", odd)
 
 
 # TASK 22:
@@ -257,6 +288,12 @@ while num != 3:
 # Do NOT use max() or sorting.
 # IMPORTANT: Starting your answer at 0 gives a wrong result.
 
+numbers = [-14, -67, -23, -89, -45]
+max = numbers[0]
+for i in range(len(numbers)):
+    if numbers[i] > max:
+        max = numbers[i]
+print(max)
 
 # TASK 23:
 # Create numbers = [14, 67, 23, 89, 45, 12].
@@ -264,6 +301,12 @@ while num != 3:
 # Do NOT use min() or sorting.
 # Your logic must also work with all-negative numbers.
 
+numbers = [14, 67, 23, 89, 45, 12]
+low = numbers[0]
+for i in range(len(numbers)):
+    if numbers[i] < low:
+        low = numbers[i]
+print(low)
 
 # TASK 24:
 # Create numbers = [5, 2, 5, 8, 5, 3, 2, 5].
@@ -271,6 +314,14 @@ while num != 3:
 # Use a loop to count how often target appears; print the count.
 # Do NOT use count(). It must work if target changes.
 
+numbers = [5, 2, 5, 8, 5, 3, 2, 5]
+target = 5
+count = 0
+for i in range(len(numbers)):
+    if numbers[i] == target:
+        count += 1
+
+print(count)
 
 # ============================================================
 # SECTION 5 — IN / NOT IN (TASKS 25–30)
@@ -292,12 +343,20 @@ while num != 3:
 # Example: "grape" not in ["apple", "banana"] evaluates to True.
 # These expressions are useful in if statements and while loops.
 
+#The difference between 'in' and 'not in' is that 'in' checks if a value is within the list or array, and if it is, then it returns True. Otherwise, it'll return False. 'not in' checks if a value is not in a list or array where if the value isn't found in the list or array, it will evaluate to True. Otherwise, it'll return False.
+
 # TASK 25:
 # Create foods = ["pizza", "burger", "tacos", "sushi", "pasta"].
 # Ask the user to enter a food.
 # Use 'in' to print "Available" or "Not available".
 # Do NOT use index() to search.
 
+foods = ["pizza", "burger", "tacos", "sushi", "pasta"]
+food = input("Enter a food: ")
+if food in foods:
+    print("Avaliable")
+else:
+    print("Not Available")
 
 # TASK 26:
 # Create supplies = ["pencil", "notebook", "eraser", "backpack"].
@@ -305,6 +364,12 @@ while num != 3:
 # Use 'not in' to print "Need to buy" if it is missing,
 # otherwise print "Already have it".
 
+supplies = ["pencil", "notebook", "eraser", "backpack"]
+item = input("Enter an item: ")
+if item not in supplies:
+    print("Need to buy")
+else:
+    print("Already have it")
 
 # TASK 27:
 # Create usernames = ["alex123", "gamer99", "pythonpro"].
@@ -313,6 +378,13 @@ while num != 3:
 # Otherwise append it and print the updated list.
 # Do not allow duplicates.
 
+usernames = ["alex123", "gamer99", "pythonpro"]
+username = input("Please enter a new username: ")
+if username in usernames:
+    print("Username taken")
+else:
+    usernames.append(username)
+    print(usernames)
 
 # TASK 28:
 # Modify the idea from Task 27 using a NEW list named accounts.
@@ -321,6 +393,13 @@ while num != 3:
 # is NOT in accounts. Append the accepted name and print accounts.
 # REQUIREMENT: Use 'not in' in your solution.
 
+accounts = ["admin", "guest"]
+name = input("Please enter a name: ")
+
+while name in accounts:
+    name = input("Please enter a name:")
+accounts.append(name)
+print(accounts)
 
 # TASK 29:
 # Create secret_words = ["dragon", "robot", "python", "galaxy"].
@@ -328,6 +407,13 @@ while num != 3:
 # Count and print the number of guesses made.
 # A correct first guess should count as 1.
 
+secret_words = ["dragon", "robot", "python", "galaxy"]
+word = input("Guess the secret word: ")
+guess = 1
+while word not in secret_words:
+    word = input("Guess the secret word: ")
+    guess +=1
+print("You've made ", guess, "guesses and have found the secret word!")
 
 # TASK 30:
 # Create guests = [].
@@ -336,6 +422,23 @@ while num != 3:
 # Use a while loop, 'in' or 'not in', and append().
 # Print the finished list and its length.
 
+guests = []
+guest = input("Please enter a unique guest name:")
+guests.append(guest)
+num_of_guesses = 4
+while num_of_guesses != 0:
+    guest = input("Please enter a unique guest name:")
+    if guest in guests:
+        guest = input("Please enter a different unique guest name:")
+        if guest not in guests:
+            guests.append(guest)
+            num_of_guesses -= 1
+    else:
+        guests.append(guest)
+        num_of_guesses -= 1
+
+print(guests)
+print(len(guests))
 
 # ============================================================
 # SECTION 6 — LISTS + FUNCTIONS (TASKS 31–35)
@@ -347,6 +450,14 @@ while num != 3:
 # Do NOT use count().
 # Test: count_positive([-2, 0, 4, 9, -1]) -> 2
 
+def count_positive(numbers):
+    count = 0
+    for i in range(len(numbers)):
+        if numbers[i] > 0:
+            count += 1
+    return count
+cnt = count_positive([-2, 0, 4, 9, -1])
+print(cnt)
 
 # TASK 32:
 # Create a function named find_item(items, target).
@@ -355,6 +466,12 @@ while num != 3:
 # Test: find_item(["cat", "dog", "cat"], "cat") -> 0
 # Test: find_item(["cat", "dog"], "fish") -> -1
 
+def find_item(items, target):
+    for i in range(len(items)):
+        if items[i] == target:
+            return i
+        else:
+            return -1
 
 # TASK 33:
 # Create a function named unique_items(items).
