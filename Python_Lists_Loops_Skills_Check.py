@@ -610,6 +610,8 @@ while choice != 5:
             print("You dont have anything in your cart.")
         else:
             num = input("What item would you like to remove?")
+            while num not in shopping_list:
+                print("You don't have that item in your cart. Please spell the item correctly, undercase everything, or choose an item that's actually within your cart.")
             shopping_list.remove(products[num])
 
     elif choice == 3:
